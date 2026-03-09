@@ -1,141 +1,145 @@
-# Distribution Guessing Game
+# Statistics Distribution Guessing Game
 
-A simple interactive statistics game built with **Python and Streamlit** where players try to identify probability distributions by looking at histograms.
+An interactive web application for learning probability distributions through visual intuition.
 
-The goal of the game is to improve intuition about statistical distributions such as Normal, Poisson, Gamma, Beta, and others.
+The app generates random samples from statistical distributions and displays their histograms. Players must identify which probability distribution produced the data.
 
----
+The project also includes an **Explorer Mode** that allows users to experiment with distribution parameters and observe how shapes change.
 
-## Project Idea
-
-In statistics classes we often memorize distribution shapes without actually developing intuition for them.
-
-This project turns that learning process into a game.
-
-The application randomly generates data from different probability distributions and displays a histogram.
-The player must guess which distribution produced the data.
-
-The game also provides statistical clues like:
-
-* Mean
-* Variance
-* Skewness
-* Kurtosis
-
-These hints help players connect numerical properties with visual patterns.
+Built using **Python, Streamlit, NumPy, SciPy, and Matplotlib**.
 
 ---
 
-## Distributions Included
+# Features
 
-The game currently includes several common distributions used in statistics and data science:
+### Game Mode
 
-Continuous distributions
+* Random distribution generated each round
+* Histogram visualization
+* Guess the correct distribution
+* Score tracking
+* Multiplayer turns
+* Timer per round
+* Machine learning hints based on statistical moments
+* Statistics clues (mean, variance, skewness, kurtosis)
+
+### Explorer Mode
+
+Interactive environment to study distributions.
+
+Users can:
+
+* Select any distribution
+* Adjust parameters with sliders
+* Change sample sizes
+* Observe how histograms change in real time
+
+---
+
+# Supported Distributions
+
+## Continuous Distributions
 
 * Normal
 * Student-t
 * Cauchy
 * Exponential
 * Gamma
+* Uniform
+* Beta
+* Laplace
 * Lognormal
 * Weibull
 * Chi-Square
-* Uniform
-* Beta
 * Pareto
-* Gumbel
 * Rayleigh
-* Laplace
+* Gumbel
 
-Discrete distributions
+## Discrete Distributions
 
 * Poisson
 * Binomial
 * Geometric
 * Negative Binomial
+* Hypergeometric
 
 ---
 
-## How the Game Works
+# Technologies Used
 
-1. The program randomly selects a probability distribution.
-2. It generates 1000 data points from that distribution.
-3. A histogram of the generated data is displayed.
-4. The player guesses which distribution it is.
-5. The score updates based on correct guesses.
-6. Players can reveal statistical hints to help identify the distribution.
+* Python
+* Streamlit
+* NumPy
+* SciPy
+* Matplotlib
+* Pandas
 
 ---
 
-## Installation
+# Installation
 
 Clone the repository
 
-```
-git clone https://github.com/mayank245956/distribution-guessing-game-.git
-```
-
-Move into the project folder
-
-```
-cd distribution-guessing-game-
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+cd YOUR_REPOSITORY
 ```
 
-Install the required libraries
+Install dependencies
 
+```bash
+pip install streamlit numpy matplotlib pandas scipy
 ```
-pip install streamlit numpy matplotlib scipy
-```
 
----
+Run the application
 
-## Run the Game
-
-Start the Streamlit app
-
-```
+```bash
 streamlit run distribution_game.py
 ```
 
-The game will open in your browser.
+The app will open automatically in your browser.
 
 ---
 
-## Technologies Used
+# Project Structure
 
-Python
-Streamlit
-NumPy
-Matplotlib
-SciPy
-
----
-
-## Educational Purpose
-
-This project is designed to help students develop **statistical intuition** rather than just memorizing formulas.
-
-By repeatedly guessing distributions from visual patterns and statistical summaries, players build a stronger understanding of how different distributions behave.
+```
+distribution_game.py   # Main application
+leaderboard.csv        # Saved scores
+README.md              # Project documentation
+```
 
 ---
 
-## Possible Future Improvements
+# Educational Purpose
 
-* Difficulty levels
-* Timed challenges
-* Leaderboard system
-* Multiplayer mode
-* Distribution explanations after each round
-* Machine learning model to suggest guesses
+This project helps build intuition for probability distributions.
+
+Instead of memorizing formulas, users learn by recognizing **patterns in data**.
+By repeatedly observing histograms, players develop a stronger understanding of how different distributions behave.
+
+This mirrors real statistical inference, where analysts attempt to identify the underlying process that generated observed data.
 
 ---
 
-## Author
+# Future Improvements
+
+Possible upgrades:
+
+* Machine learning classifier that predicts the distribution automatically
+* Mixture distributions
+* Parameter estimation challenges
+* Online leaderboard
+* Interactive density curves
+
+---
+
+# Author
 
 Mayank Pant
 
 ---
 
-## License
+# License
 
 This project is open source and available under the MIT License.
