@@ -1,145 +1,208 @@
-# Statistics Distribution Guessing Game
+# 🎮 Distribution Guessing Game
 
-An interactive web application for learning probability distributions through visual intuition.
+An interactive **statistics learning game** built with **Python and Streamlit** where players identify probability distributions from their visual patterns.
 
-The app generates random samples from statistical distributions and displays their histograms. Players must identify which probability distribution produced the data.
-
-The project also includes an **Explorer Mode** that allows users to experiment with distribution parameters and observe how shapes change.
-
-Built using **Python, Streamlit, NumPy, SciPy, and Matplotlib**.
+Instead of memorizing formulas, the game helps develop **statistical intuition** by recognizing shapes, skewness, and tails of sampled data.
 
 ---
 
-# Features
+## 🚀 Project Demo
 
-### Game Mode
+The game generates random samples from many probability distributions and displays them as histograms.  
+Your task: **guess the distribution before the timer runs out.**
 
-* Random distribution generated each round
-* Histogram visualization
-* Guess the correct distribution
-* Score tracking
-* Multiplayer turns
-* Timer per round
-* Machine learning hints based on statistical moments
-* Statistics clues (mean, variance, skewness, kurtosis)
+Features include hints, scoring, streak bonuses, and a leaderboard.
 
-### Explorer Mode
+---
 
-Interactive environment to study distributions.
+## 🧠 Why This Project Exists
+
+Statistics is often taught through equations.  
+But the human brain is extremely good at **pattern recognition**.
+
+This project turns statistical learning into a **visual pattern recognition game**.
+
+You learn to identify:
+
+- heavy tails  
+- skewness  
+- discrete vs continuous patterns  
+- bounded vs unbounded distributions  
+
+---
+
+## 🎮 Game Modes
+
+### 🎯 Game Mode
+A timed challenge where players guess the distribution.
+
+Features:
+
+- ⏱ Time-limited rounds
+- 📊 Histogram visualization
+- 💡 Progressive hints
+- 🔥 Streak bonus system
+- 👥 Multiplayer turns
+- 🏆 Leaderboard
+
+---
+
+### 🔬 Explorer Mode
+An interactive statistics sandbox.
 
 Users can:
 
-* Select any distribution
-* Adjust parameters with sliders
-* Change sample sizes
-* Observe how histograms change in real time
+- Choose any distribution
+- Change parameters
+- Observe how shape changes
+- See sample statistics
+
+Perfect for **learning distributions visually**.
 
 ---
 
-# Supported Distributions
-
-## Continuous Distributions
-
-* Normal
-* Student-t
-* Cauchy
-* Exponential
-* Gamma
-* Uniform
-* Beta
-* Laplace
-* Lognormal
-* Weibull
-* Chi-Square
-* Pareto
-* Rayleigh
-* Gumbel
-
-## Discrete Distributions
-
-* Poisson
-* Binomial
-* Geometric
-* Negative Binomial
-* Hypergeometric
+### 📚 Reference Mode
+A visual reference guide of all supported distributions with short descriptions.
 
 ---
 
-# Technologies Used
+## 📊 Supported Distributions
 
-* Python
-* Streamlit
-* NumPy
-* SciPy
-* Matplotlib
-* Pandas
+### Continuous Distributions
+
+- Normal
+- Student-t
+- Cauchy
+- Exponential
+- Gamma
+- Uniform
+- Beta
+- Laplace
+- Lognormal
+- Weibull
+- Chi-Square
+- Pareto
+- Rayleigh
+- Gumbel
+
+### Discrete Distributions
+
+- Poisson
+- Binomial
+- Geometric
+- Negative Binomial
+- Hypergeometric
 
 ---
 
-# Installation
+## 🛠 Tech Stack
 
-Clone the repository
+| Technology | Purpose |
+|------------|--------|
+| Python | Core programming language |
+| Streamlit | Interactive web interface |
+| NumPy | Random sampling |
+| SciPy | Statistical functions |
+| Matplotlib | Data visualization |
+| Pandas | Leaderboard data storage |
+
+---
+
+## 📦 Installation
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd YOUR_REPOSITORY
+git clone https://github.com/mayank245956/distribution-guessing-game.git
+cd distribution-guessing-game
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install streamlit numpy matplotlib pandas scipy
 ```
 
-Run the application
+Run the application:
 
 ```bash
 streamlit run distribution_game.py
 ```
 
-The app will open automatically in your browser.
+The game will open automatically in your browser.
 
 ---
 
-# Project Structure
+## 🎯 How to Play
+
+1. A histogram appears.
+2. Identify the probability distribution.
+3. Submit your guess.
+4. Use hints if needed.
+5. Score points and build streaks.
+
+Fast answers earn **bonus points**.
+
+---
+
+## 📈 Scoring System
+
+| Action | Points |
+|------|------|
+| Correct answer | +100 |
+| Time bonus | up to +50 |
+| Hint penalty | −20 per hint |
+| Streak bonus | extra multiplier |
+
+---
+
+## 🏆 Leaderboard
+
+Player scores are saved locally in:
 
 ```
-distribution_game.py   # Main application
-leaderboard.csv        # Saved scores
-README.md              # Project documentation
+leaderboard.csv
+```
+
+Top scores are displayed inside the game.
+
+---
+
+## 📸 Screenshots
+
+*(Add screenshots here after running the game)*
+
+Example sections:
+
+```
+![Game Mode](screenshots/game_mode.png)
+
+![Explorer Mode](screenshots/explorer_mode.png)
 ```
 
 ---
 
-# Educational Purpose
+## 💡 Future Improvements
 
-This project helps build intuition for probability distributions.
-
-Instead of memorizing formulas, users learn by recognizing **patterns in data**.
-By repeatedly observing histograms, players develop a stronger understanding of how different distributions behave.
-
-This mirrors real statistical inference, where analysts attempt to identify the underlying process that generated observed data.
-
----
-
-# Future Improvements
-
-Possible upgrades:
-
-* Machine learning classifier that predicts the distribution automatically
-* Mixture distributions
-* Parameter estimation challenges
-* Online leaderboard
-* Interactive density curves
+- Online multiplayer
+- Global leaderboard
+- More probability distributions
+- Mobile-friendly interface
+- Web deployment
 
 ---
 
-# Author
+## 👨‍💻 Author
 
-Mayank Pant
+**Mayank Pant**
+
+Statistics • Data Science • Interactive Learning Tools
+
+GitHub:  
+https://github.com/mayank245956
 
 ---
 
-# License
+## ⭐ If You Like This Project
 
-This project is open source and available under the MIT License.
+Give the repository a **star** and share it with others learning statistics.
