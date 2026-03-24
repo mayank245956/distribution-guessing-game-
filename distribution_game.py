@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import numpy as np
 import matplotlib.pyplot as plt
 import random
@@ -500,7 +501,7 @@ if "data" not in st.session_state:
 if not st.session_state.round_answered:
     # Fires a full Streamlit re-run every 1 000 ms while round is active.
     # This keeps the server-side time_left in sync and catches timeout.
-    st_autorefresh(interval=1000, limit=time_limit + 10, key="game_timer")
+    st_autorefresh(interval=1000, limit=None, key="game_timer")
 
 # Server-side ground truth
 elapsed_now = time.time() - st.session_state.start
@@ -540,30 +541,68 @@ with s4:
         <div class='score-label'>Round</div></div>""", unsafe_allow_html=True)
 
 with s5:
-    # JavaScript receives the exact remaining seconds from Python,
-    # then counts down every 100 ms independently — no flicker, no jump.
     paused_js = "true" if st.session_state.round_answered else "false"
-    st.markdown(f"""
+    components.html(f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+      * {{ margin:0; padding:0; box-sizing:border-box; }}
+      body {{ background:transparent; }}
+      #timer-container {{
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        border: 1px solid #00d4ff33;
+        border-radius: 12px;
+        padding: 12px 20px 10px;
+        text-align: center;
+        box-shadow: 0 0 20px #00d4ff18;
+        font-family: 'Space Mono', monospace;
+      }}
+      #timer-display {{
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1;
+        transition: color 0.4s;
+        color: #00ff88;
+      }}
+      #timer-label {{
+        font-size: 0.7rem;
+        color: #7070a0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 4px;
+      }}
+      #timer-bar-bg {{
+        background: #1a1a2e;
+        border-radius: 6px;
+        height: 6px;
+        margin-top: 8px;
+        overflow: hidden;
+      }}
+      #timer-bar-fill {{
+        height: 100%;
+        border-radius: 6px;
+        background: #00ff88;
+        transition: width 0.15s linear, background 0.4s;
+      }}
+    </style>
+    </head>
+    <body>
     <div id="timer-container">
-        <div id="timer-display">--</div>
-        <div id="timer-label">TIME LEFT</div>
-        <div id="timer-bar-bg">
-            <div id="timer-bar-fill" style="width:100%;background:#00ff88"></div>
-        </div>
+      <div id="timer-display">--</div>
+      <div id="timer-label">TIME LEFT</div>
+      <div id="timer-bar-bg">
+        <div id="timer-bar-fill" style="width:100%"></div>
+      </div>
     </div>
-
     <script>
     (function() {{
-        const remaining0 = {time_left:.3f};   // exact float from Python
+        const remaining0 = {time_left:.3f};
         const maxTime    = {time_limit};
         const paused     = {paused_js};
 
         const display = document.getElementById('timer-display');
         const barFill = document.getElementById('timer-bar-fill');
-
-        if (!display || !barFill) return;
-
-        let remaining = remaining0;
 
         function color(secs) {{
             const p = secs / maxTime;
@@ -578,25 +617,33 @@ with s5:
             barFill.style.width      = ((s / maxTime) * 100).toFixed(2) + '%';
         }}
 
-        render(remaining);        // immediate — no blank flash
+        let remaining = remaining0;
+        render(remaining);
 
-        if (paused) return;       // round already answered — freeze here
+        if (paused) return;
+
+        if (window._distroTimerIv) {{
+            clearInterval(window._distroTimerIv);
+            window._distroTimerIv = null;
+        }}
 
         const iv = setInterval(() => {{
             remaining -= 0.1;
             if (remaining <= 0) {{
                 render(0);
                 clearInterval(iv);
+                window._distroTimerIv = null;
                 return;
             }}
             render(remaining);
         }}, 100);
 
-        // Safety: clear when Streamlit remounts the component
         window._distroTimerIv = iv;
     }})();
     </script>
-    """, unsafe_allow_html=True)
+    </body>
+    </html>
+    """, height=110)
 
 
 # ─────────────────────────────────────────────
